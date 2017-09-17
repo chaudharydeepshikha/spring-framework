@@ -1,6 +1,9 @@
 package deepshikha.spring.springboot;
 
+import deepshikha.spring.springboot.controller.ConstructorInjectedController;
+import deepshikha.spring.springboot.controller.GetterInjectedController;
 import deepshikha.spring.springboot.controller.MyController;
+import deepshikha.spring.springboot.controller.PropertyInjectedController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -14,5 +17,9 @@ public class Application {
 		MyController myController = (MyController) context.getBean("myController");
 
 		myController.hello();
+
+		System.out.println(context.getBean(PropertyInjectedController.class).sayHello());
+		System.out.println(context.getBean(GetterInjectedController.class).sayHello());
+		System.out.println(context.getBean(ConstructorInjectedController.class).sayHello());
 	}
 }
