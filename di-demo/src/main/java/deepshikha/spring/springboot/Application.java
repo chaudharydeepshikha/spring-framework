@@ -1,5 +1,6 @@
 package deepshikha.spring.springboot;
 
+import deepshikha.spring.springboot.ExampleBeans.FakeDataSource;
 import deepshikha.spring.springboot.controller.ConstructorInjectedController;
 import deepshikha.spring.springboot.controller.GetterInjectedController;
 import deepshikha.spring.springboot.controller.MyController;
@@ -16,9 +17,9 @@ public class Application {
 		ApplicationContext context = SpringApplication.run(Application.class, args);
 		MyController myController = (MyController) context.getBean("myController");
 
-		System.out.println(myController.hello());
-		System.out.println(context.getBean(PropertyInjectedController.class).sayHello());
-		System.out.println(context.getBean(GetterInjectedController.class).sayHello());
-		System.out.println(context.getBean(ConstructorInjectedController.class).sayHello());
+		FakeDataSource fakeDataSource = (FakeDataSource) context.getBean(FakeDataSource.class);
+		System.out.println(fakeDataSource.getUsername());
+		System.out.println(fakeDataSource.getPassword());
+		System.out.println(fakeDataSource.getDburl());
 	}
 }
