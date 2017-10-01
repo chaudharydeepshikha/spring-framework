@@ -1,0 +1,33 @@
+# This a comment
+
+name: Deepshikha
+
+names:
+    - Deepshikha
+    - Chaudhary
+    - Deepu
+
+pound_sign: "#"
+
+book:
+  author: "Deepshikha author"
+  publisher: "Chaudhary Publisher"
+
+truth: yes #True, true, YES
+
+lie: no #False, false, NO
+
+string_value: "This is a string message"
+
+colon_string: "String with a : in it"
+
+includes_new_line: |
+  sf fsd d fdf fdf
+  asff fdsf asfd
+  fasdg dafasg dfasdg
+
+ignore_new_line: >
+  fasdgf dsgsdg ffsdg
+  sdgg sdgagas dsgsdgs
+  fdgsdf sdfgsg dfdg
+

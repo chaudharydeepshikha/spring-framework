@@ -1,0 +1,4 @@
+jms:
+  username: Deepshikha
+  password: JMSpassword
+  dburl: www.jmsBroker.com
