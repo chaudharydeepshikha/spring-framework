@@ -1,6 +1,7 @@
 package deepshikha.springframework.recipe.Domain;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * @author Deepshikha chaudhary on 10/8/2017
@@ -21,6 +22,9 @@ public class Recipe {
 
     @Lob
     private Byte[] image;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<Ingredient> ingredients;
 
     public long getId() {
         return Id;
@@ -92,5 +96,13 @@ public class Recipe {
 
     public void setImage(Byte[] image) {
         this.image = image;
+    }
+
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 }
