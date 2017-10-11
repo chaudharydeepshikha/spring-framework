@@ -1,6 +1,9 @@
 package deepshikha.springframework.recipe.Bootstrap;
 
-import deepshikha.springframework.recipe.Domain.*;
+import deepshikha.springframework.recipe.Domain.Difficulty;
+import deepshikha.springframework.recipe.Domain.Ingredient;
+import deepshikha.springframework.recipe.Domain.Notes;
+import deepshikha.springframework.recipe.Domain.Recipe;
 import deepshikha.springframework.recipe.Repositories.CategoryRepository;
 import deepshikha.springframework.recipe.Repositories.RecipeRepository;
 import deepshikha.springframework.recipe.Repositories.UnitOfMeasureRepository;
@@ -10,8 +13,6 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * @author Deepshikha chaudhary on 10/11/2017
@@ -54,14 +55,14 @@ public class recipeBootstarp implements ApplicationListener<ContextRefreshedEven
         recipe.setImage(null);
         recipe.setDifficulty(Difficulty.KIND_OF_HARD);
 
-        recipe.getIngredients().add(new Ingredient("ripe Avocados", new BigDecimal("1"), recipe, unitOfMeasureRepository.findByDescription("Number").get()));
-        recipe.getIngredients().add(new Ingredient("fresh lime juice", new BigDecimal("1"), recipe, unitOfMeasureRepository.findByDescription("Tablespooon").get()));
-        recipe.getIngredients().add(new Ingredient("cilantro (leaves and tender stems)", new BigDecimal("1"), recipe, unitOfMeasureRepository.findByDescription("Tablespooon").get()));
+        recipe.addIngredients(new Ingredient("ripe Avocados", new BigDecimal("1"), unitOfMeasureRepository.findByDescription("Number").get()));
+        recipe.addIngredients(new Ingredient("fresh lime juice", new BigDecimal("1"), unitOfMeasureRepository.findByDescription("Tablespooon").get()));
+        recipe.addIngredients(new Ingredient("cilantro (leaves and tender stems)", new BigDecimal("1"), unitOfMeasureRepository.findByDescription("Tablespooon").get()));
 
         recipe.getCategories().add(categoryRepository.findByDescription("American").get());
         recipe.getCategories().add(categoryRepository.findByDescription("Italian").get());
 
-        Notes notes = new Notes(recipe,"For a very quick guacamole just take a 1/4 cup of salsa and mix it in with your mashed avocados.\n" +
+        Notes notes = new Notes("For a very quick guacamole just take a 1/4 cup of salsa and mix it in with your mashed avocados.\n" +
                 "Feel free to experiment! One classic Mexican guacamole has pomegranate seeds and chunks of peaches in it (a Diana Kennedy favorite). Try guacamole with added pineapple, mango, or strawberries.\n" +
                 "The simplest version of guacamole is just mashed avocados with salt. Don't let the lack of availability of other ingredients stop you from making guacamole.\n" +
                 "To extend a limited supply of avocados, add either sour cream or cottage cheese to your guacamole dip. Purists may be horrified, but so what? It tastes great.");
